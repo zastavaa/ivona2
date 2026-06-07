@@ -52,7 +52,7 @@
     .section-container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 100px 24px;
+      padding: 140px 24px;
     }
 
     .section-title {
@@ -60,7 +60,7 @@
       font-size: 2.5rem;
       text-align: center;
       color: var(--gold);
-      margin-bottom: 48px;
+      margin-bottom: 64px;
       font-weight: 700;
     }
 
@@ -102,15 +102,16 @@
       background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 30%, var(--white) 60%, var(--rose-lightest) 100%);
       position: relative;
       overflow: hidden;
-      padding: 24px;
+      padding: 48px 24px;
     }
 
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-size: clamp(3.5rem, 9vw, 7rem);
       color: var(--text-dark);
-      margin-bottom: 8px;
-      letter-spacing: 1px;
+      margin-bottom: 4px;
+      letter-spacing: -1px;
+      font-weight: 700;
     }
 
     .hero h1 .heart-icon {
@@ -127,26 +128,54 @@
       60% { transform: scale(1); }
     }
 
-    .hero .subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      color: var(--text-light);
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
+    .hero .hero-separator {
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 16px auto;
     }
 
-    .hero .timer {
+    .hero .subtitle {
       font-family: var(--font-heading);
       font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--text-light);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .timer-block {
+      text-align: center;
+      min-width: 80px;
+      padding: 14px 20px;
+      border: 1px solid var(--gold-light);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .timer-number {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       color: var(--gold);
       font-weight: 700;
-      margin-bottom: 40px;
-      padding: 8px 24px;
-      border: 1px solid var(--gold-light);
-      border-radius: 50px;
-      display: inline-block;
-      background: rgba(255,255,255,0.7);
+      line-height: 1.2;
+    }
+
+    .timer-label {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-top: 2px;
     }
 
     .scroll-btn {
@@ -162,6 +191,20 @@
       letter-spacing: 1px;
       transition: all 0.4s ease;
       background: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: skewX(-25deg);
+      transition: none;
     }
 
     .scroll-btn:hover {
@@ -169,6 +212,15 @@
       color: var(--white);
       box-shadow: 0 4px 20px var(--gold-glow);
       transform: translateY(-2px);
+    }
+
+    .scroll-btn:hover::after {
+      animation: shimmer 0.8s ease;
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 125%; }
     }
 
     /* ===== PISMO ===== */
@@ -182,7 +234,7 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 20px;
-      padding: 48px 40px;
+      padding: 64px 56px;
       max-width: 720px;
       margin: 0 auto;
       box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08), 0 2px 10px rgba(0,0,0,0.04);
@@ -256,7 +308,7 @@
     .timeline-item {
       display: flex;
       justify-content: flex-start;
-      padding: 20px 0;
+      padding: 32px 0;
       position: relative;
       width: 100%;
       opacity: 0;
@@ -365,7 +417,7 @@
 
     .gallery-item {
       break-inside: avoid;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(248, 187, 208, 0.3);
@@ -527,16 +579,17 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(136, 14, 79, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.3);
       padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       z-index: 9995;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 -4px 30px rgba(212, 175, 55, 0.08);
     }
 
     .player-left {
@@ -558,7 +611,7 @@
     .song-name {
       font-size: 0.95rem;
       font-weight: 700;
-      color: var(--white);
+      color: var(--text-dark);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -579,7 +632,7 @@
 
     .artist-name {
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.6);
+      color: var(--text-light);
     }
 
     .player-center {
@@ -607,14 +660,14 @@
 
     .play-btn:hover {
       background: var(--gold);
-      color: var(--dark-rose);
+      color: var(--white);
       box-shadow: 0 0 16px var(--gold-glow);
     }
 
     .progress-bar {
       flex: 1;
       height: 4px;
-      background: rgba(255,255,255,0.2);
+      background: rgba(212, 175, 55, 0.2);
       border-radius: 2px;
       cursor: pointer;
       position: relative;
@@ -640,7 +693,7 @@
       background: none;
       border: none;
       font-size: 1.3rem;
-      color: rgba(255,255,255,0.7);
+      color: var(--text-light);
       transition: all 0.3s;
       padding: 4px 8px;
     }
@@ -657,6 +710,7 @@
       padding: 16px 24px;
       border-radius: 12px;
       font-size: 0.95rem;
+      border: 1px solid var(--gold);
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       z-index: 99999;
       opacity: 0;
@@ -675,7 +729,7 @@
       background: var(--text-dark);
       color: rgba(255,255,255,0.8);
       text-align: center;
-      padding: 48px 24px 96px;
+      padding: 48px 24px 120px;
       font-size: 0.95rem;
       line-height: 1.8;
     }
@@ -860,10 +914,10 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .section-container { padding: 60px 20px; }
+      .section-container { padding: 80px 20px; }
       .section-title { font-size: 2rem; margin-bottom: 32px; }
 
-      .pismo-card { padding: 32px 24px; }
+      .pismo-card { padding: 40px 28px; }
       .pismo-card h2 { font-size: 1.5rem; }
 
       .timeline::before { left: 20px; }
@@ -958,8 +1012,26 @@
   <section id="hero">
     <div class="hero-content">
       <h1>Ivona &amp; Nikola <span class="heart-icon">🤍</span></h1>
+      <div class="hero-separator"></div>
       <p class="subtitle">2 godine zajedno</p>
-      <div class="timer" id="timer">0 dana, 0 sati, 0 minuta, 0 sekundi</div>
+      <div class="timer-container">
+        <div class="timer-block">
+          <span class="timer-number" id="tDays">0</span>
+          <div class="timer-label">DANA</div>
+        </div>
+        <div class="timer-block">
+          <span class="timer-number" id="tHours">0</span>
+          <div class="timer-label">SATI</div>
+        </div>
+        <div class="timer-block">
+          <span class="timer-number" id="tMins">0</span>
+          <div class="timer-label">MINUTA</div>
+        </div>
+        <div class="timer-block">
+          <span class="timer-number" id="tSecs">0</span>
+          <div class="timer-label">SEKUNDI</div>
+        </div>
+      </div>
       <a href="#pismo" class="scroll-btn">Otvori naš svet ↓</a>
     </div>
   </section>
@@ -1209,10 +1281,14 @@ Hvala ti što si moja, što si ti. 🤍`;
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      const el = document.getElementById('timer');
-      if (el) {
-        el.textContent = `${days} dana, ${hours} sati, ${minutes} minuta, ${seconds} sekundi`;
-      }
+      const setNum = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      };
+      setNum('tDays', days);
+      setNum('tHours', String(hours).padStart(2, '0'));
+      setNum('tMins', String(minutes).padStart(2, '0'));
+      setNum('tSecs', String(seconds).padStart(2, '0'));
     }
     updateTimer();
     setInterval(updateTimer, 1000);
