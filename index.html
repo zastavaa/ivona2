@@ -913,40 +913,112 @@
     }
 
     /* ===== RESPONSIVE ===== */
+
+    /* Tablet (481px–768px) */
     @media (max-width: 768px) {
       .section-container { padding: 80px 20px; }
-      .section-title { font-size: 2rem; margin-bottom: 32px; }
+      .section-title { font-size: 2rem; margin-bottom: 40px; }
+
+      .hero h1 { font-size: clamp(2.4rem, 7vw, 3.5rem); }
+
+      .timer-container { gap: 14px; }
+      .timer-block { min-width: 70px; padding: 12px 14px; }
+      .timer-number { font-size: clamp(1.4rem, 4vw, 1.8rem); }
 
       .pismo-card { padding: 40px 28px; }
       .pismo-card h2 { font-size: 1.5rem; }
 
       .timeline::before { left: 20px; }
-      .timeline-item { flex-direction: row !important; padding-left: 50px; }
+      .timeline-item { flex-direction: row !important; padding-left: 50px; padding: 28px 0; }
       .timeline-card { width: 100%; }
       .timeline-card::after {
         left: -38px !important;
         right: auto !important;
       }
 
-      .music-player {
-        padding: 10px 12px;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
+      .gallery-grid { column-count: 2; }
+      .gallery-item .placeholder { height: 200px; }
 
+      #us .us-image { max-width: 400px; }
+
+      .music-player {
+        padding: 10px 14px;
+        gap: 10px;
+      }
       .player-left { flex: 0 0 auto; }
       .player-center { flex: 1; min-width: 120px; }
       .player-right { flex: 0 0 auto; }
-      .song-name { max-width: 80px; }
+      .song-name { max-width: 100px; }
 
       footer { padding-bottom: 80px; }
     }
 
+    /* Phone (≤480px) */
     @media (max-width: 480px) {
-      .player-center { flex: 1 1 100%; order: 3; }
+      .section-container { padding: 60px 16px; }
+      .section-title { font-size: 1.6rem; margin-bottom: 32px; }
+
+      #hero { padding: 32px 16px; min-height: 92vh; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 2.4rem); margin-bottom: 2px; letter-spacing: 0; }
+      .hero .hero-separator { width: 60px; margin: 12px auto; }
+      .hero .subtitle { font-size: clamp(1rem, 4vw, 1.1rem); margin-bottom: 28px; }
+
+      .timer-container { gap: 10px; }
+      .timer-block { min-width: 60px; padding: 10px 8px; }
+      .timer-number { font-size: clamp(1.2rem, 5vw, 1.4rem); }
+      .timer-label { font-size: 0.6rem; letter-spacing: 1px; }
+
+      .scroll-btn { padding: 12px 28px; font-size: 0.9rem; }
+
+      .pismo-card { padding: 28px 20px; border-radius: 16px; }
+      .pismo-card h2 { font-size: 1.3rem; }
+      .pismo-card .pismo-body { font-size: 0.95rem; line-height: 1.7; }
+      .pismo-card .potpis { font-size: 1.1rem; margin-top: 24px; }
+
+      .timeline-item { padding: 24px 0; padding-left: 42px; }
+      .timeline-card { padding: 20px; }
+      .timeline-card::after { left: -32px !important; width: 14px; height: 14px; }
+      .timeline-card .tl-icon { font-size: 1.3rem; }
+      .timeline-card h3 { font-size: 1rem; }
+      .timeline-card .tl-date { font-size: 0.75rem; }
+
+      .gallery-grid { column-count: 1; }
+      .gallery-item { margin-bottom: 20px; border-radius: 14px; }
+      .gallery-item .placeholder { height: 180px; font-size: 0.95rem; }
+      .gallery-item .placeholder .icon { font-size: 2rem; }
+      .gallery-item .caption { font-size: 0.8rem; padding: 10px 12px; }
+      .gallery-note { font-size: 0.85rem; }
+
+      #us .us-image { max-width: 280px; }
+      #us .us-title { font-size: clamp(1.6rem, 6vw, 2rem); }
+
+      .lock-header { font-size: 2.5rem; gap: 8px; }
+      .lock-icon { font-size: 2.2rem; }
+      .lock-text { font-size: 1rem; }
+      .keypad { grid-template-columns: repeat(3, 64px); gap: 12px; }
+      .key { width: 64px; height: 64px; font-size: 1.3rem; }
+
+      .lightbox { padding: 16px; }
+      .lightbox-prev { left: 4px; font-size: 2rem; }
+      .lightbox-next { right: 4px; font-size: 2rem; }
+      .lightbox-close { top: 8px; right: 12px; font-size: 2rem; }
+
+      .music-player { padding: 8px 12px; gap: 6px; }
+      .player-center { flex: 1 1 100%; order: 3; margin-top: 4px; }
       .player-left { flex: 1; }
       .player-right { flex: 0; }
-      .song-name { max-width: 100px; }
+      .play-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+      .song-name { font-size: 0.85rem; max-width: 110px; }
+      .artist-name { font-size: 0.65rem; }
+      .control-btn { font-size: 1.1rem; padding: 2px 6px; }
+      .music-icon { font-size: 1.2rem; }
+
+      .easter-toast { bottom: 70px; right: 12px; padding: 12px 16px; font-size: 0.85rem; }
+
+      footer { padding: 36px 16px 80px; font-size: 0.85rem; }
+      footer .gold-hearts { font-size: 1rem; gap: 10px; }
+
+      .fade-section { transition: opacity 0.6s ease, transform 0.6s ease; }
     }
 
     /* ===== SECTION ANIMATIONS ===== */
@@ -1299,7 +1371,7 @@ Hvala ti što si moja, što si ti. 🤍`;
     const canvas = document.getElementById('petalCanvas');
     const ctx = canvas.getContext('2d');
     let petals = [];
-    const PETAL_COUNT = 20;
+    const PETAL_COUNT = window.innerWidth < 480 ? 8 : window.innerWidth < 768 ? 12 : 20;
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
