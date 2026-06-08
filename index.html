@@ -6,7 +6,7 @@
   <title>Ivona & Nikola 🤍 — 2 godine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     /* ===== RESET & BASE ===== */
@@ -62,6 +62,52 @@
       color: var(--gold);
       margin-bottom: 64px;
       font-weight: 700;
+    }
+
+    /* ===== SPARKLE / STAR BACKGROUND ===== */
+    .sparkle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9997;
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0;
+      animation: sparkleFloat linear infinite;
+    }
+
+    .sparkle.gold {
+      background: #d4af37;
+      width: 2px;
+      height: 2px;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+      }
+      10% {
+        opacity: 0.7;
+        transform: translateY(0) scale(1);
+      }
+      90% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0.3);
+      }
     }
 
     /* ===== CANVAS — PADAJUCE RUZE ===== */
@@ -178,6 +224,51 @@
       margin-top: 2px;
     }
 
+    /* ===== MEMORY COUNTER ===== */
+    .memory-counter {
+      text-align: center;
+      margin-top: 80px;
+      padding: 48px 24px;
+      border-top: 1px solid var(--gold-light);
+    }
+
+    .memory-counter .mc-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      color: var(--gold);
+      margin-bottom: 32px;
+      font-weight: 700;
+    }
+
+    .mc-grid {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .mc-block {
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .mc-number {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--gold);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .mc-label {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
     .scroll-btn {
       display: inline-block;
       padding: 14px 40px;
@@ -223,178 +314,236 @@
       100% { left: 125%; }
     }
 
+
+
+
+
     /* ===== PISMO ===== */
     #pismo {
       background: var(--rose-lightest);
+      padding: 80px 20px;
     }
 
-    .pismo-card {
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 20px;
-      padding: 64px 56px;
-      max-width: 720px;
+    .letter-paper {
+      max-width: 640px;
       margin: 0 auto;
-      box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08), 0 2px 10px rgba(0,0,0,0.04);
       position: relative;
+      background: #fdfaf4;
+      border-left: 4px solid #d4af37;
+      border-right: 2px solid #e0d5c0;
+      border-bottom: 2px solid #e0d5c0;
+      border-radius: 0 0 4px 4px;
+      padding: 48px 56px 48px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     }
 
-    .pismo-card h2 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      color: var(--text-dark);
-      margin-bottom: 24px;
-      font-style: italic;
+    .letter-paper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(139, 119, 92, 0.005) 2px, rgba(139, 119, 92, 0.005) 4px
+      );
+      pointer-events: none;
+      border-radius: inherit;
     }
 
-    .pismo-card .pismo-body {
+    .letter-greeting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .letter-body {
+      font-family: 'Playfair Display', serif;
       font-size: 1.05rem;
       line-height: 1.9;
-      color: var(--text-dark);
+      color: #1a1a1a;
       white-space: pre-wrap;
-      min-height: 40px;
     }
 
-    .typing-cursor {
-      display: inline;
-      font-family: var(--font-body);
-      font-weight: 300;
-      color: var(--gold);
-      font-size: 1.2rem;
-      animation: blink 0.8s step-end infinite;
+    .drop-cap {
+      float: left;
+      font-size: 3.8em;
+      font-weight: 700;
+      color: #d4af37;
+      line-height: 0.85;
+      margin-right: 10px;
+      font-family: 'Playfair Display', serif;
     }
 
-    .typing-cursor.hidden {
-      display: none;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .pismo-card .potpis {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
+    .letter-signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-top: 32px;
       text-align: right;
-      color: var(--text-dark);
-      font-style: italic;
+      color: #1a1a1a;
     }
 
-    /* ===== TIMELINE ===== */
+    /* ===== NOVINE GAZETTE ===== */
     #trenuci {
-      background: var(--white);
+      background: #f5f0e8;
+      padding: 80px 40px;
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      color: #1a1a1a;
+    }
+
+    .gazette-header {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gazette-header .top-line {
+      height: 3px;
+      background: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    .gazette-header h2 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 12px;
+    }
+
+    .gazette-header .thin-line {
+      height: 1px;
+      background: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    .gazette-header .meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+      padding: 0 4px;
+      margin-bottom: 12px;
+    }
+
+    .gazette-header .meta-row span { flex: 1; }
+    .gazette-header .meta-row .meta-center { text-align: center; }
+    .gazette-header .meta-row .meta-right { text-align: right; }
+
+    .gazette-header .bottom-line {
+      height: 3px;
+      background: #1a1a1a;
+      margin-bottom: 40px;
+    }
+
+    .gazette-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gazette-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       position: relative;
     }
 
-    .timeline {
-      position: relative;
-      padding: 20px 0;
-    }
-
-    .timeline::before {
+    .gazette-columns::before {
       content: '';
       position: absolute;
       left: 50%;
       top: 0;
       bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-light));
+      width: 1px;
+      background: #1a1a1a;
       transform: translateX(-50%);
     }
 
-    .timeline-item {
-      display: flex;
-      justify-content: flex-start;
-      padding: 32px 0;
-      position: relative;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    .gazette-article {
+      break-inside: avoid;
     }
 
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .timeline-item:nth-child(odd) {
-      flex-direction: row;
-    }
-
-    .timeline-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .timeline-card {
-      width: 44%;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(248, 187, 208, 0.3);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative;
-    }
-
-    .timeline-card::after {
-      content: '';
-      position: absolute;
-      top: 28px;
-      width: 16px;
-      height: 16px;
-      background: var(--gold);
-      border: 3px solid var(--white);
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px var(--gold);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-card::after {
-      right: -30px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-card::after {
-      left: -30px;
-    }
-
-    .timeline-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
-      border-color: var(--gold);
-    }
-
-    .timeline-card.special {
-      background: linear-gradient(135deg, rgba(245, 230, 200, 0.9), rgba(255, 248, 225, 0.9));
-      border-color: var(--gold);
-      box-shadow: 0 4px 24px var(--gold-glow);
-    }
-
-    .timeline-card .tl-icon { font-size: 1.6rem; }
-    .timeline-card .tl-date {
-      font-size: 0.85rem;
-      color: var(--gold);
+    .gazette-article .article-title {
+      font-size: 1.05rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      line-height: 1.3;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
     }
-    .timeline-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      margin: 8px 0;
-      color: var(--text-dark);
-    }
-    .timeline-card p { font-size: 0.95rem; color: var(--text-light); }
 
-    .timeline-card .floating-heart {
-      display: inline-block;
-      font-size: 1.4rem;
-      animation: heartBeat 1.5s ease-in-out infinite;
-      margin-left: 6px;
+    .gazette-article .article-meta {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .gazette-article .article-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    .gazette-article .article-divider {
+      height: 1px;
+      background: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .gazette-article.span-full {
+      grid-column: 1 / -1;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid #d4af37;
+      padding: 40px 32px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .gazette-article.span-full .article-title {
+      font-size: 1.3rem;
+    }
+    .gazette-article.span-full .article-meta {
+      font-size: 0.85rem;
+    }
+    .gazette-article.span-full .article-text {
+      font-size: 0.95rem;
+      max-width: 700px;
+      margin: 0 auto 0;
+    }
+
+    .gazette-footer {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      border-top: 2px solid #1a1a1a;
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    .gazette-footer p {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .gazette-footer .editor-note {
+      font-size: 10px;
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: 1px;
+      color: #888;
+      margin-top: 4px;
     }
 
     /* ===== GALERIJA ===== */
@@ -479,24 +628,35 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.88);
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 99990;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       padding: 40px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     .lightbox.active {
       display: flex;
+      opacity: 1;
     }
 
     .lightbox img {
-      max-width: 90%;
-      max-height: 85vh;
+      max-width: 92%;
+      max-height: 82vh;
       object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      border-radius: 12px;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.6), 0 0 0 4px var(--white), 0 0 0 5px rgba(255,255,255,0.15);
+      transform: scale(0.92);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
     }
 
     .lightbox-close {
@@ -504,42 +664,78 @@
       top: 20px;
       right: 30px;
       color: var(--white);
-      font-size: 3rem;
+      font-size: 2.8rem;
       cursor: pointer;
-      transition: color 0.3s;
+      transition: all 0.3s;
       line-height: 1;
+      z-index: 2;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.15);
     }
-    .lightbox-close:hover { color: var(--gold); }
+    .lightbox-close:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.15);
+    }
 
     .lightbox-prev, .lightbox-next {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       color: var(--white);
-      font-size: 3.5rem;
+      font-size: 3rem;
       cursor: pointer;
-      padding: 16px;
-      transition: color 0.3s;
+      padding: 12px 18px;
+      transition: all 0.3s;
       user-select: none;
       line-height: 1;
+      z-index: 2;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .lightbox-prev:hover, .lightbox-next:hover { color: var(--gold); }
-    .lightbox-prev { left: 20px; }
-    .lightbox-next { right: 20px; }
+    .lightbox-prev:hover, .lightbox-next:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.15);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
 
     .lightbox-counter {
       position: absolute;
-      bottom: 24px;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      bottom: 28px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      font-weight: 300;
+      background: rgba(0,0,0,0.3);
+      padding: 6px 18px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     @media (max-width: 640px) {
-      .lightbox { padding: 20px; }
-      .lightbox-prev { left: 8px; font-size: 2.5rem; }
-      .lightbox-next { right: 8px; font-size: 2.5rem; }
-      .lightbox-close { top: 12px; right: 16px; font-size: 2.5rem; }
+      .lightbox { padding: 16px; }
+      .lightbox-prev { left: 8px; font-size: 2.2rem; width: 44px; height: 44px; padding: 8px; }
+      .lightbox-next { right: 8px; font-size: 2.2rem; width: 44px; height: 44px; padding: 8px; }
+      .lightbox-close { top: 12px; right: 14px; font-size: 2.2rem; width: 40px; height: 40px; }
+      .lightbox img { max-width: 96%; max-height: 70vh; border-radius: 8px; }
     }
 
     /* ===== US SECTION ===== */
@@ -724,7 +920,184 @@
       transform: translateY(0);
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== SURPRISE SECTION ===== */
+    #surprise {
+      background: var(--white);
+      text-align: center;
+      padding: 100px 24px;
+    }
+
+    .surprise-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    .surprise-pre-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .surprise-btn {
+      display: inline-block;
+      padding: 16px 48px;
+      border: 2px solid var(--gold);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      margin-top: 24px;
+    }
+
+    .surprise-btn:hover {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: 0 4px 30px var(--gold-glow);
+      transform: translateY(-3px);
+    }
+
+    /* ===== SURPRISE MODAL ===== */
+    .surprise-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 100001;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .surprise-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .surprise-modal .close-surprise {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      color: rgba(255,255,255,0.5);
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 5;
+      line-height: 1;
+    }
+    .surprise-modal .close-surprise:hover {
+      color: var(--gold);
+    }
+
+    /* Floating surprise hearts background */
+    .surprise-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .surprise-heart {
+      position: absolute;
+      font-size: 1.4rem;
+      opacity: 0;
+      animation: heartFloat linear infinite;
+      color: #f48fb1;
+    }
+
+    @keyframes heartFloat {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+      }
+      15% {
+        opacity: 0.6;
+      }
+      85% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1.2) rotate(20deg);
+      }
+    }
+
+    /* Glowing heart */
+    .surprise-glow-heart {
+      font-size: 5rem;
+      margin-bottom: 32px;
+      animation: glowPulse 2.5s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 30px rgba(244, 143, 177, 0.6));
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px rgba(244, 143, 177, 0.4));
+      }
+      50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 50px rgba(244, 143, 177, 0.8));
+      }
+    }
+
+    /* Surprise message */
+    .surprise-message {
+      max-width: 520px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .surprise-message .sm-line {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 8px;
+      opacity: 0;
+    }
+
+    .surprise-message .sm-line.visible {
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+
+    .surprise-message .sm-signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-top: 28px;
+      opacity: 0;
+    }
+
+    .surprise-message .sm-signature.visible {
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
     footer {
       background: var(--text-dark);
       color: rgba(255,255,255,0.8);
@@ -925,21 +1298,22 @@
       .timer-block { min-width: 70px; padding: 12px 14px; }
       .timer-number { font-size: clamp(1.4rem, 4vw, 1.8rem); }
 
-      .pismo-card { padding: 40px 28px; }
-      .pismo-card h2 { font-size: 1.5rem; }
+      #pismo { padding: 60px 24px; }
+      .letter-paper { padding: 36px 36px 40px; }
+      .letter-greeting { font-size: 1.8rem; }
+      .letter-body { font-size: 1rem; }
+      .letter-signature { font-size: 1.3rem; }
 
-      .timeline::before { left: 20px; }
-      .timeline-item { flex-direction: row !important; padding-left: 50px; padding: 28px 0; }
-      .timeline-card { width: 100%; }
-      .timeline-card::after {
-        left: -38px !important;
-        right: auto !important;
-      }
+      #trenuci { padding: 60px 24px; }
+      .gazette-columns { gap: 28px; }
 
       .gallery-grid { column-count: 2; }
       .gallery-item .placeholder { height: 200px; }
 
       #us .us-image { max-width: 400px; }
+
+      .memory-counter { margin-top: 60px; padding: 36px 20px; }
+      .mc-grid { gap: 24px; }
 
       .music-player {
         padding: 10px 14px;
@@ -970,17 +1344,24 @@
 
       .scroll-btn { padding: 12px 28px; font-size: 0.9rem; }
 
-      .pismo-card { padding: 28px 20px; border-radius: 16px; }
-      .pismo-card h2 { font-size: 1.3rem; }
-      .pismo-card .pismo-body { font-size: 0.95rem; line-height: 1.7; }
-      .pismo-card .potpis { font-size: 1.1rem; margin-top: 24px; }
+      .memory-counter { margin-top: 48px; padding: 32px 16px; }
+      .mc-grid { gap: 20px; }
+      .mc-block { min-width: 90px; }
 
-      .timeline-item { padding: 24px 0; padding-left: 42px; }
-      .timeline-card { padding: 20px; }
-      .timeline-card::after { left: -32px !important; width: 14px; height: 14px; }
-      .timeline-card .tl-icon { font-size: 1.3rem; }
-      .timeline-card h3 { font-size: 1rem; }
-      .timeline-card .tl-date { font-size: 0.75rem; }
+      #pismo { padding: 40px 12px; }
+      .letter-paper { padding: 28px 20px 32px; border-left-width: 3px; }
+      .letter-greeting { font-size: 1.5rem; margin-bottom: 16px; }
+      .letter-body { font-size: 0.95rem; line-height: 1.7; }
+      .drop-cap { font-size: 2.8em; margin-right: 6px; }
+      .letter-signature { font-size: 1.2rem; margin-top: 24px; }
+
+      #trenuci { padding: 48px 20px; }
+      .gazette-columns { grid-template-columns: 1fr; gap: 24px; }
+      .gazette-columns::before { display: none; }
+      .gazette-article.span-full { padding: 28px 20px; }
+      .gazette-article .article-title { font-size: 0.95rem; }
+      .gazette-header .meta-row { font-size: 9px; letter-spacing: 1px; flex-direction: column; gap: 2px; text-align: center; }
+      .gazette-header .meta-row span { text-align: center !important; }
 
       .gallery-grid { column-count: 1; }
       .gallery-item { margin-bottom: 20px; border-radius: 14px; }
@@ -1080,6 +1461,9 @@
   <!-- ===== HEART CURSOR ===== -->
   <div id="heartCursor" aria-hidden="true">🤍</div>
 
+  <!-- ===== SPARKLE BACKGROUND ===== -->
+  <div class="sparkle-container" id="sparkleContainer" aria-hidden="true"></div>
+
   <!-- ===== SEKCION 1: HERO ===== -->
   <section id="hero">
     <div class="hero-content">
@@ -1108,25 +1492,118 @@
     </div>
   </section>
 
-  <!-- ===== SEKCION 2: PISMO ===== -->
-  <section id="pismo" class="fade-section">
-    <div class="section-container">
-      <div class="pismo-card">
-        <h2>Draga Ivona,</h2>
-        <div class="pismo-body" id="pismoBody"></div>
-        <span class="typing-cursor" id="typingCursor">|</span>
-        <!-- PROMENI OVO: Gornji tekst pisma se definise u CONFIG sekciji u JS -->
-        <p class="potpis">Tvoj Nikola 🐧</p>
+  <!-- ===== MEMORY COUNTER ===== -->
+  <section id="memory" class="fade-section">
+    <div class="section-container" style="padding-top: 0; padding-bottom: 60px;">
+      <div class="memory-counter">
+        <h2 class="mc-title">730 dana zajedno</h2>
+        <div class="mc-grid">
+          <div class="mc-block">
+            <div class="mc-number" id="mcDays">0</div>
+            <div class="mc-label">Dana</div>
+          </div>
+          <div class="mc-block">
+            <div class="mc-number" id="mcHours">0</div>
+            <div class="mc-label">Sati</div>
+          </div>
+          <div class="mc-block">
+            <div class="mc-number" id="mcMins">0</div>
+            <div class="mc-label">Minuta</div>
+          </div>
+          <div class="mc-block">
+            <div class="mc-number" id="mcSecs">0</div>
+            <div class="mc-label">Sekundi</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SEKCION 3: TIMELINE ===== -->
+  <!-- ===== SEKCION 2: PISMO ===== -->
+  <section id="pismo" class="fade-section">
+    <div class="letter-paper">
+      <h2 class="letter-greeting">Ivona,</h2>
+      <div class="letter-body">
+        <span class="drop-cap">P</span>rošle su dve godine otkako smo zajedno i otkako si ušla u moj život i promenila ga nabolje.
+
+Sećam se našeg prvog poljupca, kao i svih lepih trenutaka koje smo zajedno proveli. Svaka uspomena sa tobom zauzima posebno mesto u mom srcu i nešto je čega ću se uvek rado sećati.
+
+Dok ti ovo pišem i pravim, trenutno smo na pauzi — našoj prvoj pravoj pauzi. Ne znam kako će se sve završiti, ali se iskreno nadam najboljem.
+
+Koliko god da nam je sada teško i koliko god da naša veza trenutno nije onakva kakva bi trebalo da bude, želim da znaš da te mnogo volim i da mi značiš više nego što reči mogu da opišu.
+
+Nadam se da ćemo uspeti da rešimo sve što stoji između nas na našem prvom zajedničkom putovanju, da ćemo se provesti najlepše moguće i stvoriti uspomene koje ćemo pamtiti celog života.
+
+Za kraj, želim da ti kažem samo jedno — hvala.
+
+Hvala ti što si me promenila nabolje, što si bila uz mene kroz sve i što si moja devojka. 🤍
+
+Volim te
+      </div>
+      <p class="letter-signature">Tvoj Bubi</p>
+    </div>
+  </section>
+
+  <!-- ===== SEKCION 3: NOVINE ===== -->
   <section id="trenuci" class="fade-section">
-    <div class="section-container">
-      <h2 class="section-title">Naši momenti</h2>
-      <div class="timeline" id="timeline"></div>
-      <!-- PROMENI OVO: Milestone-ovi se definisu u JS array-u 'milestones' -->
+    <div class="gazette-header">
+      <div class="top-line"></div>
+      <h2>The Ivona Gazette</h2>
+      <div class="thin-line"></div>
+      <div class="meta-row">
+        <span class="meta-left">Vol. 2, Br. 1</span>
+        <span class="meta-center">Novi Banovci, Srbija</span>
+        <span class="meta-right">Godišnjica, Jun 2026</span>
+      </div>
+      <div class="bottom-line"></div>
+    </div>
+
+    <div class="gazette-grid">
+      <div class="gazette-columns">
+        <!-- Članak 1 -->
+        <div class="gazette-article">
+          <div class="article-title">Lokalni mladić sreo devojku koja će mu promeniti život</div>
+          <div class="article-meta">Jun 2024 — Novi Banovci</div>
+          <div class="article-text">Nikola Z., stanovnik Novih Banovaca, izjavio je da "nije očekivao ništa slično." Susret koji je u početku izgledao kao obična prilika ubrzo se pretvorio u nešto što, prema rečima izvora bliskih paru, "niko od njih dvoje nije planirao." Detalji ostaju privatni, ali osmeh na licu govori sve.</div>
+          <div class="article-divider"></div>
+        </div>
+
+        <!-- Članak 2 -->
+        <div class="gazette-article">
+          <div class="article-title">Zvanično: Ivona B. proglašena najslađom osobom u Novim Banovcima</div>
+          <div class="article-meta">2024 — Novi Banovci</div>
+          <div class="article-text">Nakon temeljnog istraživanja i konsultacija sa jednim izvorom (Nikola Z.), komisija je jednoglasno donela odluku. "Nije ni bila konkurencija," izjavio je predsednik komisije. Nagrada dolazi u obliku neograničenih zagrljaja i besplatnih belih ruža.</div>
+          <div class="article-divider"></div>
+        </div>
+
+        <!-- Članak 3 -->
+        <div class="gazette-article">
+          <div class="article-title">Naučnici zbunjeni: devojka fizički identična pingvinu</div>
+          <div class="article-meta">2024 — Nepoznata lokacija</div>
+          <div class="article-text">Istraživači sa Univerziteta u Novim Banovcima saopštili su da su otkrili fenomen bez presedana — mlada žena čiji hod, karakter i slatkoća u potpunosti odgovaraju profilu pingvina. "Nismo sigurni kako je ovo moguće," rekao je glavni istraživač Nikola Z., "ali zaključak je jasan."</div>
+          <div class="article-divider"></div>
+        </div>
+
+        <!-- Članak 4 -->
+        <div class="gazette-article">
+          <div class="article-title">Bele ruže ponovo u modi: jedan čovek zaslužan za trend</div>
+          <div class="article-meta">2024 — Novi Banovci</div>
+          <div class="article-text">Prodavci cveća u Novim Banovcima beleže nagli porast potražnje za belim ružama. Prema neimenovanom izvoru, sve je počelo kada je jedan mladić odlučio da pokloni upravo ovu vrstu cveća svojoj devojci. "Znao sam šta voli," rekao je izvor. "To je jedino što je važno."</div>
+          <div class="article-divider"></div>
+        </div>
+      </div>
+
+      <!-- Članak 5 — spanning obe kolone, zlatni -->
+      <div class="gazette-article span-full">
+        <div class="article-title">Ekskluzivno: par najavljuje istorijsko prvo zajedničko more</div>
+        <div class="article-meta">Uskoro — Destinacija poznata samo njima</div>
+        <div class="article-text">U ekskluzivnoj izjavi za naš list, par je potvrdio da se sprema za događaj koji će, prema svemu sudeći, biti zapamćen kao prekretnica. "Jedva čekam," rekao je Nikola Z., odbijajući da otkrije detalje. Ivona B. nije bila dostupna za komentar, ali izvori bliski paru tvrde da je uzbuđenje obostrano. Redakcija THE IVONA GAZETTE najavila je ekskluzivno praćenje događaja.</div>
+      </div>
+    </div>
+
+    <div class="gazette-footer">
+      <p>The Ivona Gazette — Sve vesti koje su vredne čitanja, od 2024.</p>
+      <p class="editor-note">Glavni i odgovorni urednik: Nikola Z. 🤍</p>
     </div>
   </section>
 
@@ -1149,6 +1626,13 @@
     </div>
   </section>
 
+  <!-- ===== SEKCION 6: SURPRISE ===== -->
+  <section id="surprise" class="fade-section">
+    <span class="surprise-icon">🤍</span>
+    <p class="surprise-pre-title">One More Thing...</p>
+    <button class="surprise-btn" id="surpriseBtn">🎁 Otvori iznenađenje</button>
+  </section>
+
   <!-- ===== FOOTER ===== -->
   <footer>
     <p>Napravljeno sa 🤍 od Nikole, za Ivonu — 2 godine i zauvek 🐧🌹</p>
@@ -1159,6 +1643,26 @@
       <span>🤍</span>
     </div>
   </footer>
+
+  <!-- ===== SURPRISE MODAL ===== -->
+  <div class="surprise-modal" id="surpriseModal">
+    <span class="close-surprise" id="closeSurprise">&times;</span>
+    <div class="surprise-hearts" id="surpriseHearts"></div>
+    <div class="surprise-glow-heart">&#10084;&#65039;</div>
+    <div class="surprise-message" id="surpriseMessage">
+      <p class="sm-line">Ivona,</p>
+      <p class="sm-line">Hvala ti za svaku poruku, svaki zagrljaj,</p>
+      <p class="sm-line">svaki osmeh i svaku uspomenu</p>
+      <p class="sm-line">koju smo zajedno stvorili.</p>
+      <p class="sm-line">Ove dve godine su bile</p>
+      <p class="sm-line">najlepše godine mog života.</p>
+      <p class="sm-line">Učinila si obične dane posebnim,</p>
+      <p class="sm-line">a teške dane lakšim.</p>
+      <p class="sm-line">Volim te sve više iz dana u dan</p>
+      <p class="sm-line">i nadam se našem pomirenju :)</p>
+      <p class="sm-signature">Zauvek tvoj,<br>Nikola ❤️</p>
+    </div>
+  </div>
 
   <!-- ===== LIGHTBOX ===== -->
   <div class="lightbox" id="lightbox">
@@ -1197,6 +1701,8 @@
   <!-- PROMENI OVO: audioSrc u CONFIG-u ako je drugacija putanja -->
 
   <script>
+    history.scrollRestoration = 'manual';
+
     // ============================================================
     //  KONFIGURACIJA — PROMENI OVO: Prilagodi svoje podatke
     // ============================================================
@@ -1224,11 +1730,12 @@
 
         if (val === 'backspace') {
           enteredPassword = enteredPassword.slice(0, -1);
-        } else if (val === 'confirm') {
+        } else         if (val === 'confirm') {
           if (enteredPassword === CORRECT_PASSWORD) {
             lockScreen.classList.add('unlocked');
             setTimeout(() => {
               lockScreen.style.display = 'none';
+              window.scrollTo(0, 0);
             }, 600);
           } else {
             lockScreen.classList.add('shake');
@@ -1263,65 +1770,8 @@
     }
 
     // ============================================================
-    //  TEKST PISMA — PROMENI OVO: Po zelji izmeni sadrzaj
+    //  (Napomena: Tekst pisma je sada direktno u HTML-u)
     // ============================================================
-    const pismoFullText = `Prošle su dve godine otkako si ušla u moj život, i svaki dan sa tobom je lepši od prethodnog. Sećam se našeg prvog izlaska, onog skrivenog restorana, kada smo pričali satima i nismo hteli da se raziđemo. Tada sam znao — ti si nešto posebno.
-
-Volim kako oči zablistaju kad vidiš macu na ulici, kako se smeješ mojim glupim šalama, kako umeš da budeš tvrdoglava ali u isto vreme najnežnija osoba koju znam. Tvoj osmeh je moje sunce, tvoj zagrljaj moje utočište.
-
-Jedva čekam naše prvo more. Da ležimo na plaži, slušamo talase i pravimo planove za budućnost. A znam da će tih planova biti mnogo — jer sa tobom želim sve.
-
-I naravno, bele ruže uvek će me podsećati na tebe. Baš kao i pingvini. 🐧
-
-Hvala ti što si moja, što si ti. 🤍`;
-
-    // ============================================================
-    //  MILESTONES — PROMENI OVO: Datumi i opisi
-    // ============================================================
-    const milestones = [
-      {
-        date: "18. jun 2024.",
-        icon: "🌸",
-        title: "Prvi kiss",
-        desc: "Zauvek ce ostati nase.",
-        special: false
-      },
-      {
-        date: "15. jul 2023.",
-        icon: "🐱",
-        title: "Otkrili smo da oboje volimo mačke",
-        desc: "I tada sam znao — savršena si.",
-        special: false
-      },
-      {
-        date: "20. septembar 2023.",
-        icon: "🌹",
-        title: "Prve bele ruže",
-        desc: "Zauvek će me podsećati na tvoj osmeh.",
-        special: false
-      },
-      {
-        date: "nepoznato vreme :) ",
-        icon: "🐧",
-        title: "Dobila nadimak Pingvin",
-        desc: "Moj mali pingvin, uvek ćeš biti najslađa.",
-        special: false
-      },
-      {
-        date: "Uskoro",
-        icon: "✈️",
-        title: "Naše prvo more 🌊",
-        desc: "Jedva čekam...",
-        special: true
-      },
-      {
-        date: "18-06",
-        icon: "🤍",
-        title: "2 godine zajedno",
-        desc: "I još mnogo, mnogo više nadam se.",
-        special: false
-      }
-    ];
 
     // ============================================================
     //  GALERIJA — PROMENI OVO: Slike i opisi
@@ -1332,10 +1782,14 @@ Hvala ti što si moja, što si ti. 🤍`;
       { src: "ulica.jpeg", caption: "Ulica", real: true },
       { src: "zenba.jpeg", caption: "Zenba", real: true },
       { src: "whatsapp.jpeg", caption: "Tvoj omiljeni dan", real: true },
-      { src: "", caption: "Dodaj sliku — Prvi izlazak", real: false },
-      { src: "", caption: "Dodaj sliku — Lep trenutak", real: false },
-      { src: "", caption: "Dodaj sliku — Izlazak sa društvom", real: false },
-      { src: "", caption: "Dodaj sliku — Putovanje", real: false }
+      { src: "Gardos.PNG", caption: "Gardos", real: true },
+      { src: "kissic.PNG", caption: "Kissic", real: true },
+      { src: "sneg.JPG", caption: "Sneg", real: true },
+      { src: "zimska bajka.jpeg", caption: "Zimska bajka", real: true },
+      { src: "cmok.jpg", caption: "Cmok", real: true },
+      { src: "my houseee.JPG", caption: "My houseee", real: true },
+      { src: "prespavanjac.JPG", caption: "Prespavanjac", real: true },
+      { src: "prva slika.JPG", caption: "Prva slika", real: true }
     ];
 
 
@@ -1449,83 +1903,7 @@ Hvala ti što si moja, što si ti. 🤍`;
     window.addEventListener('resize', resizeCanvas);
 
     // ============================================================
-    //  3. TYPING EFFECT — Pismo (Intersection Observer)
-    // ============================================================
-    const pismoBody = document.getElementById('pismoBody');
-    const typingCursor = document.getElementById('typingCursor');
-    let hasTyped = false;
-    let typeInterval = null;
-
-    function startTyping() {
-      if (hasTyped) return;
-      hasTyped = true;
-      let index = 0;
-
-      typingCursor.classList.remove('hidden');
-
-      typeInterval = setInterval(() => {
-        if (index < pismoFullText.length) {
-          pismoBody.textContent = pismoFullText.substring(0, index + 1);
-          index++;
-          // Scroll to keep cursor visible
-          typingCursor.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        } else {
-          clearInterval(typeInterval);
-          typingCursor.classList.add('hidden');
-        }
-      }, 18);
-    }
-
-    const pismoObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting && !hasTyped) {
-          startTyping();
-        }
-      }
-    }, { threshold: 0.3 });
-
-    const pismoSection = document.getElementById('pismo');
-    if (pismoSection) pismoObserver.observe(pismoSection);
-
-    // ============================================================
-    //  4. TIMELINE — Generisanje i animacija
-    // ============================================================
-    const timelineEl = document.getElementById('timeline');
-
-    milestones.forEach((m, idx) => {
-      const item = document.createElement('div');
-      item.className = 'timeline-item';
-      item.style.transitionDelay = `${idx * 0.1}s`;
-
-      const specialClass = m.special ? 'special' : '';
-      const heartSpan = m.special ? '<span class="floating-heart">💫</span>' : '';
-
-      item.innerHTML = `
-        <div class="timeline-card ${specialClass}">
-          <span class="tl-icon">${m.icon}</span>
-          <div class="tl-date">${m.date}</div>
-          <h3>${m.title} ${heartSpan}</h3>
-          ${m.desc ? `<p>${m.desc}</p>` : ''}
-        </div>
-      `;
-
-      timelineEl.appendChild(item);
-    });
-
-    const timelineObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      }
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.timeline-item').forEach((el) => {
-      timelineObserver.observe(el);
-    });
-
-    // ============================================================
-    //  5. GALERIJA — Generisanje i Lightbox
+    //  4. GALERIJA — Generisanje i Lightbox
     // ============================================================
     const galleryGrid = document.getElementById('galleryGrid');
     let currentImageIndex = 0;
@@ -1604,6 +1982,18 @@ Hvala ti što si moja, što si ti. 🤍`;
       if (e.key === 'ArrowLeft') navigateLightbox(-1);
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
+
+    // Lightbox swipe support
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        navigateLightbox(diff > 0 ? 1 : -1);
+      }
+    }, { passive: true });
 
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
@@ -1728,15 +2118,141 @@ Hvala ti što si moja, što si ti. 🤍`;
     });
 
     // ============================================================
-    //  CONSOLE — Poruka za inspekciju
+    //  SPARKLE BACKGROUND
+    // ============================================================
+    const sparkleContainer = document.getElementById('sparkleContainer');
+    const sparkleCount = window.innerWidth < 480 ? 15 : window.innerWidth < 768 ? 25 : 40;
+
+    for (let i = 0; i < sparkleCount; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle' + (Math.random() > 0.6 ? ' gold' : '');
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDuration = (8 + Math.random() * 12) + 's';
+      s.style.animationDelay = (Math.random() * 15) + 's';
+      const sz = 1.5 + Math.random() * 2;
+      s.style.width = sz + 'px';
+      s.style.height = sz + 'px';
+      sparkleContainer.appendChild(s);
+    }
+
+    // ============================================================
+    //  MEMORY COUNTER — Animirano prebrojavanje
+    // ============================================================
+    function animateMemoryCounter() {
+      const start = new Date(CONFIG.datumPocetka);
+      const now = new Date();
+      const diff = now - start;
+      const targets = {
+        mcDays: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        mcHours: Math.floor(diff / (1000 * 60 * 60)),
+        mcMins: Math.floor(diff / (1000 * 60)),
+        mcSecs: Math.floor(diff / 1000)
+      };
+
+      Object.entries(targets).forEach(([id, target]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const duration = 2200;
+        const startTime = performance.now();
+
+        function update(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    const memoryObs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          animateMemoryCounter();
+          memoryObs.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.3 });
+
+    const memSection = document.getElementById('memory');
+    if (memSection) memoryObs.observe(memSection);
+
+    // ============================================================
+    //  SURPRISE MODAL — Iznenađenje
+    // ============================================================
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const surpriseModal = document.getElementById('surpriseModal');
+    const closeSurprise = document.getElementById('closeSurprise');
+    const surpriseHearts = document.getElementById('surpriseHearts');
+    const smLines = document.querySelectorAll('.sm-line');
+    const smSignature = document.querySelector('.sm-signature');
+
+    function createSurpriseHearts() {
+      surpriseHearts.innerHTML = '';
+      const count = window.innerWidth < 480 ? 15 : 25;
+      const symbols = ['❤️', '🤍', '💕', '💗', '💖'];
+      for (let i = 0; i < count; i++) {
+        const h = document.createElement('div');
+        h.className = 'surprise-heart';
+        h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        h.style.left = Math.random() * 100 + '%';
+        h.style.bottom = '-5%';
+        h.style.animationDuration = (6 + Math.random() * 8) + 's';
+        h.style.animationDelay = (Math.random() * 5) + 's';
+        h.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+        surpriseHearts.appendChild(h);
+      }
+    }
+
+    function typewriterReveal(idx) {
+      if (idx >= smLines.length) {
+        setTimeout(() => smSignature.classList.add('visible'), 400);
+        return;
+      }
+      smLines[idx].classList.add('visible');
+      setTimeout(() => typewriterReveal(idx + 1), 350);
+    }
+
+    if (surpriseBtn) {
+      surpriseBtn.addEventListener('click', () => {
+        surpriseModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        createSurpriseHearts();
+        smLines.forEach(el => el.classList.remove('visible'));
+        smSignature.classList.remove('visible');
+        setTimeout(() => typewriterReveal(0), 800);
+      });
+    }
+
+    if (closeSurprise) {
+      closeSurprise.addEventListener('click', () => {
+        surpriseModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    surpriseModal.addEventListener('click', (e) => {
+      if (e.target === surpriseModal) {
+        surpriseModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && surpriseModal.classList.contains('active')) {
+        surpriseModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
     // ============================================================
     console.log(`%c🤍 ${CONFIG.iMoje} & ${CONFIG.imeDjevojke} — 2 godine 🤍`, 'font-size:20px; color:#d4af37;');
     console.log(`%cNapravljeno sa ljubavlju za ${CONFIG.imeDjevojke}`, 'font-size:14px; color:#f48fb1;');
 
     console.log('--- PROMENI OVO ---');
     console.log('CONFIG:', CONFIG);
-    console.log('Pismo tekst: promeni promenljivu "pismoFullText"');
-    console.log('Milestones: promeni array "milestones"');
+    console.log('Pismo tekst: sada je direktno u HTML-u (sekcija 2)');
+    console.log('Milestones: sada su u staticnom HTML-u (newspaper stil)');
     console.log('Galerija: promeni array "galleryItems"');
 
   </script>
